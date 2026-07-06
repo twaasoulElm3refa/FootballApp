@@ -52,4 +52,40 @@ class Leagues extends Model
             ->where('type', 'top_assists')
             ->orderBy('rank');
     }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favourite_leagues')
+            ->withPivot([
+                'notifications_enabled',
+                'notify_match_start',
+                'notify_goals',
+                'notify_half_time',
+                'notify_full_time',
+                'notify_lineups',
+                'notify_red_cards',
+                'sort_order',
+            ])
+            ->withTimestamps();
+    }
+
+    public function notifications()
+    {
+        return $this->hasMany(UserNotification::class, 'league_id');
+    }
+
+    public function news()
+    {
+        return $this->hasMany(News::class, 'league_id');
+    }
+
+    public function syncLogs()
+    {
+        return $this->hasMany(FootballSyncLog::class, 'league_id');
+    }
+
+    public function followSuggestions()
+    {
+        return $this->hasMany(UserFollowSuggestion::class, 'league_id');
+    }
 }

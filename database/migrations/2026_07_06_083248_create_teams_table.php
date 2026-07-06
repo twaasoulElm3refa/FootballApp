@@ -32,7 +32,6 @@ return new class extends Migration
             $table->index(['is_active', 'sort_order']);
             $table->index(['country']);
             $table->index(['is_national']);
-            $table->timestamps();
         });
     }
 

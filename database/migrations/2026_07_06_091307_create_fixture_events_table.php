@@ -33,7 +33,6 @@ return new class extends Migration
             $table->index(['team_id']);
             $table->index(['type']);
             $table->index(['elapsed']);
-            $table->timestamps();
         });
     }
 

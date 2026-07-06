@@ -57,7 +57,6 @@ return new class extends Migration
             $table->index(['is_finished']);
             $table->index(['home_team_id']);
             $table->index(['away_team_id']);
-            $table->timestamps();
         });
     }
 
