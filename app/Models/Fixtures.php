@@ -34,4 +34,19 @@ class Fixtures extends Model
     {
         return $this->hasMany(FixtureLineups::class, 'fixture_id');
     }
+
+    public function players()
+    {
+        return $this->hasMany(FixtureLineupPlayers::class, 'fixture_id');
+    }
+
+    public function stats()
+    {
+        return $this->hasMany(FixtureStatistics::class, 'fixture_id');
+    }
+
+    public function playerStats()
+    {
+        return $this->hasMany(FixturePlayerStatistics::class, 'fixture_id');
+    }
 }

@@ -4,16 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class FixtureLineupPlayers extends Model
+class FixturePlayerStatistics extends Model
 {
-    protected $table = 'fixture_lineup_players';
+    protected $table = 'fixture_player_statistics';
 
     protected $guarded = [];
-
-    public function fixtureLineup()
-    {
-        return $this->belongsTo(FixtureLineups::class, 'fixture_lineup_id');
-    }
 
     public function fixture()
     {
@@ -24,4 +19,5 @@ class FixtureLineupPlayers extends Model
     {
         return $this->belongsTo(Teams::class, 'team_id');
     }
+
 }

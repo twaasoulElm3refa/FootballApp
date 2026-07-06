@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\FixtureLineups;
+use App\Models\Fixtures;
 use App\Models\Teams;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -16,6 +17,7 @@ return new class extends Migration
         Schema::create('fixture_lineup_players', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(FixtureLineups::class, 'fixture_lineup_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(Fixtures::class, 'fixture_id')->constrained()->cascadeOnDelete();
             $table->foreignIdFor(Teams::class, 'team_id')->constrained()->cascadeOnDelete();
             $table->unsignedBigInteger('api_player_id')->nullable();
             $table->string('player_name');

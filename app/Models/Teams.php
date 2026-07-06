@@ -48,4 +48,24 @@ class Teams extends Model
     {
         return $this->hasMany(FixtureLineupPlayers::class, 'team_id');
     }
+
+    public function fixtureStatistics()
+    {
+        return $this->hasMany(FixtureStatistics::class, 'team_id');
+    }
+
+    public function fixturePlayerStatistics()
+    {
+        return $this->hasMany(FixturePlayerStatistics::class, 'team_id');
+    }
+
+    public function standings()
+    {
+        return $this->hasMany(Standings::class, 'team_id');
+    }
+
+    public function rankings()
+    {
+        return $this->hasMany(LeaguePlayerRankings::class, 'team_id');
+    }
 }

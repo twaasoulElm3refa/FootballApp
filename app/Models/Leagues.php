@@ -28,4 +28,14 @@ class Leagues extends Model
     {
         return $this->hasMany(Fixtures::class, 'league_id');
     }
+
+    public function standings()
+    {
+        return $this->hasMany(Standings::class, 'league_id');
+    }
+
+    public function rankings()
+    {
+        return $this->hasMany(LeaguePlayerRankings::class, 'league_id');
+    }
 }
