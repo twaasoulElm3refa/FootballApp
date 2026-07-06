@@ -34,8 +34,22 @@ class Leagues extends Model
         return $this->hasMany(Standings::class, 'league_id');
     }
 
-    public function rankings()
+    public function playerRankings()
     {
-        return $this->hasMany(LeaguePlayerRankings::class, 'league_id');
+        return $this->hasMany(LeaguePlayerRankings::class);
+    }
+
+    public function topScorers()
+    {
+        return $this->hasMany(LeaguePlayerRankings::class)
+            ->where('type', 'top_scorers')
+            ->orderBy('rank');
+    }
+
+    public function topAssists()
+    {
+        return $this->hasMany(LeaguePlayerRankings::class)
+            ->where('type', 'top_assists')
+            ->orderBy('rank');
     }
 }
