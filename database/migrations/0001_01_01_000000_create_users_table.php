@@ -19,7 +19,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('language')->default('en');
             $table->string('timezone')->default('UTC');
-            $table->enum('status', ['active', 'suspended', 'deleted'])->default('active')->index();
+            $table->enum('status', ['active', 'suspended', 'banned','deleted'])->default('active')->index();
             $table->timestamp('email_verified_at')->nullable();
             $table->timestamp('phone_verified_at')->nullable();
             $table->timestamp('last_login_at')->nullable();

@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repository\Contracts\User;
+namespace App\Repository\Contracts\leagues;
 
-interface UserRepositoryInterface
+interface LeagueRepositoryInterface
 {
     public function getAll($perPage = 10, $search = null, $status = null);
     public function count();

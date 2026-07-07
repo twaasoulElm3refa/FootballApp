@@ -6,7 +6,6 @@ use App\Http\Controllers\concerns\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Http\Resources\User\UserResources;
 use App\Repository\Contracts\User\UserRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -14,9 +13,12 @@ use Illuminate\Support\Facades\Cache;
 class UserDashboardController extends Controller
 {
     use ApiResponse;
+
     protected UserRepositoryInterface $userInterface;
 
     protected int $cacheTime = 60 * 10;
+
+    private const CACHE_TAG = 'dashboard_users';
 
     public function __construct(UserRepositoryInterface $userInterface)
     {
@@ -25,13 +27,30 @@ class UserDashboardController extends Controller
 
     public function userCount()
     {
-        return $this->success($this->userInterface->count(), 'User count fetched successfully');
+        $cacheKey = $this->makeCacheKey('count');
+
+        $count = $this->usersCache()->remember($cacheKey, $this->cacheTime, function () {
+            return $this->userInterface->count();
+        });
+
+        return $this->success($count, 'User count fetched successfully');
+    }
+
+    public function userActive()
+    {
+        $cacheKey = $this->makeCacheKey('active_count');
+
+        $count = $this->usersCache()->remember($cacheKey, $this->cacheTime, function () {
+            return $this->userInterface->countActive();
+        });
+
+        return $this->success($count, 'Active user count fetched successfully');
     }
 
     public function users(Request $request)
     {
-        $page = $request->get('page', 1);
-        $perPage = $request->get('per_page', 10);
+        $page = (int) $request->get('page', 1);
+        $perPage = (int) $request->get('per_page', 10);
         $search = $request->get('search');
         $status = $request->get('status');
 
@@ -46,7 +65,9 @@ class UserDashboardController extends Controller
 
     public function getUser($id)
     {
-        $cacheKey = "dashboard:users:show:{$id}";
+        $cacheKey = $this->makeCacheKey('show', [
+            'id' => $id,
+        ]);
 
         $user = $this->usersCache()->remember($cacheKey, $this->cacheTime, function () use ($id) {
             return $this->userInterface->get($id);
@@ -72,7 +93,7 @@ class UserDashboardController extends Controller
 
         $user = $this->userInterface->update($id, $data);
 
-        $this->clearUsersCache($id);
+        $this->clearUsersCache();
 
         return $this->success($user, 'User updated successfully');
     }
@@ -81,37 +102,33 @@ class UserDashboardController extends Controller
     {
         $this->userInterface->delete($id);
 
-        $this->clearUsersCache($id);
+        $this->clearUsersCache();
 
         return $this->success(null, 'User deleted successfully');
     }
 
     private function makeUsersCacheKey($page, $perPage, $search = null, $status = null): string
     {
-        return 'dashboard:users:index:'.md5(json_encode([
+        return $this->makeCacheKey('index', [
             'page' => $page,
             'per_page' => $perPage,
             'search' => $search,
             'status' => $status,
-        ]));
+        ]);
     }
 
-    private function clearUsersCache($userId = null): void
+    private function makeCacheKey(string $type, array $params = []): string
     {
-        if (method_exists(Cache::getStore(), 'tags')) {
-            Cache::tags(['dashboard_users'])->flush();
+        return 'dashboard:users:' . $type . ':' . md5(json_encode($params));
+    }
 
-            return;
-        }
-        Cache::flush();
+    private function clearUsersCache(): void
+    {
+        Cache::tags([self::CACHE_TAG])->flush();
     }
 
     private function usersCache()
     {
-        if (method_exists(Cache::getStore(), 'tags')) {
-            return Cache::tags(['dashboard_users']);
-        }
-
-        return Cache::store();
+        return Cache::tags([self::CACHE_TAG]);
     }
 }

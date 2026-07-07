@@ -1,0 +1,469 @@
+خطة لوحة تحكم الأدمن لمنصة Football Live Scores
+
+بعد إنشاء الجداول والموديلز الأساسية مثل المستخدمين، الدوريات، الفرق، المباريات، الإحصائيات، التشكيلات، الأخبار، التنبيهات، وسجلات المزامنة، يجب أن تكون لوحة تحكم الأدمن عبارة عن Admin Control Center لإدارة منصة Live Scores كاملة، وليس مجرد صفحات CRUD للجداول.
+
+==================================================
+1. Dashboard Overview
+==================================================
+
+هذه هي الصفحة الرئيسية للأدمن، وتعرض ملخصًا سريعًا لحالة المنصة.
+
+الكروت المقترحة:
+
+- Total Users
+- Active Users
+- Total Leagues
+- Active Leagues
+- Total Teams
+- Today Matches
+- Live Matches
+- Finished Matches
+- Pending Notifications
+- API Requests Today
+- Failed Syncs
+- Published News
+
+أقسام أسفل الكروت:
+
+- Today's Matches
+- Live Matches
+- Latest Sync Logs
+- API Usage Summary
+- Latest Notifications
+- Latest News
+
+==================================================
+2. Users Management
+==================================================
+
+قسم إدارة المستخدمين.
+
+الصفحات المقترحة:
+
+- All Users
+- Create User
+- Edit User
+- Show User
+- User Devices
+- User OTPs
+- Notification Preferences
+- User Favorites
+
+الأدمن يجب أن يستطيع رؤية:
+
+- بيانات المستخدم
+- الأجهزة المسجلة
+- آخر ظهور
+- الفرق والدوريات والمباريات المفضلة
+- تفضيلات التنبيهات
+- سجل البحث
+- التنبيهات التي وصلت للمستخدم
+
+==================================================
+3. Football Setup
+==================================================
+
+قسم إعداد بيانات كرة القدم، وهو مسؤول عن الدوريات والفرق التي يعمل عليها الموقع.
+
+--------------------------------------------------
+Leagues
+--------------------------------------------------
+
+الوظائف المطلوبة:
+
+- All Leagues
+- Create / Add League from API ID
+- Edit League
+- Activate / Deactivate League
+- Featured Leagues
+- Sort Order
+- Season
+
+أزرار مهمة:
+
+- Sync League Data
+
+--------------------------------------------------
+Teams
+--------------------------------------------------
+
+الوظائف المطلوبة:
+
+- All Teams
+- Teams by League
+- Featured Teams
+- National Teams
+- Club Teams
+- Activate / Deactivate Team
+
+--------------------------------------------------
+League Teams
+--------------------------------------------------
+
+الوظائف المطلوبة:
+
+- ربط الفرق بالدوري والموسم
+- عرض فرق كل دوري
+- تحديد المجموعة Group A / Group B
+- تحديد الموسم
+- تفعيل أو تعطيل الفريق داخل الدوري
+
+==================================================
+4. Matches / Fixtures
+==================================================
+
+هذا هو قلب المشروع.
+
+الصفحات المقترحة:
+
+- All Fixtures
+- Today Fixtures
+- Live Fixtures
+- Upcoming Fixtures
+- Finished Fixtures
+- Cancelled Fixtures
+- Fixture Details
+
+داخل صفحة تفاصيل المباراة يجب عرض:
+
+- Basic Info
+- Events
+- Lineups
+- Lineup Players
+- Statistics
+- Player Ratings
+- Notifications Related to Match
+- News Related to Match
+
+أزرار تحكم مهمة:
+
+- Sync Match
+- Sync Events
+- Sync Lineups
+- Sync Statistics
+- Sync Player Ratings
+
+==================================================
+5. Live Center
+==================================================
+
+قسم مهم جدًا لتجربة قريبة من 365Scores.
+
+يعرض المباريات اللايف فقط.
+
+المطلوب عرضه:
+
+- Live Matches Now
+- Current Minute
+- Score
+- Status
+- Last Event
+- Auto Refresh
+- Manual Sync Button
+
+أزرار مهمة:
+
+- Sync Live Fixtures
+- Sync Events
+- Sync Stats
+- Send Goal Notification
+
+ملاحظة:
+التنبيهات يجب أن تُرسل أوتوماتيك لاحقًا، لكن يمكن للأدمن مراجعة أو اختبار الإرسال من هذه الصفحة.
+
+==================================================
+6. Standings & Rankings
+==================================================
+
+قسم خاص بترتيب الدوريات وترتيب اللاعبين.
+
+الصفحات المقترحة:
+
+- Standings
+- League Player Rankings
+- Top Scorers
+- Top Assists
+- Top Yellow Cards
+- Top Red Cards
+
+الفلاتر المطلوبة:
+
+- League
+- Season
+- Group
+
+أزرار مهمة:
+
+- Sync Standings
+- Sync Rankings
+
+==================================================
+7. News Management
+==================================================
+
+بما أن المشروع يحتوي على جدول News، يجب إنشاء CMS بسيط للأخبار.
+
+الصفحات المقترحة:
+
+- All News
+- Create News
+- Edit News
+- Draft News
+- Published News
+- Archived News
+- Breaking News
+- Featured News
+
+الخبر يمكن ربطه بـ:
+
+- League
+- Team
+- Fixture
+
+حتى يظهر في صفحة الدوري أو الفريق أو المباراة.
+
+==================================================
+8. Notifications Center
+==================================================
+
+قسم إدارة ومتابعة التنبيهات.
+
+الصفحات المقترحة:
+
+- All Notifications
+- Create System Notification
+- Match Notifications
+- News Notifications
+- Notification Logs
+- Failed Notifications
+
+الأدمن يجب أن يرى:
+
+- من وصل إليه التنبيه
+- نوع التنبيه
+- هل التنبيه Push أو Database أو Email
+- هل فشل أو نجح
+- سبب الفشل
+- وقت الإرسال
+
+الفلاتر المطلوبة:
+
+- status: pending / sent / failed / skipped
+- channel: database / push / email
+- type: goal / match_start / news / system
+
+==================================================
+9. Sync Center
+==================================================
+
+قسم إدارة المزامنة مع API-Football.
+
+الصفحات المقترحة:
+
+- Sync Dashboard
+- Sync Logs
+- Manual Sync
+- Failed Syncs
+- Scheduled Syncs
+
+أزرار مهمة:
+
+- Sync Today's Fixtures
+- Sync Live Matches
+- Sync Selected League
+- Sync Standings
+- Sync Events for Live Matches
+- Sync Lineups
+- Sync Player Ratings
+
+يعرض من جدول football_sync_logs:
+
+- sync_type
+- status
+- records_fetched
+- records_created
+- records_updated
+- records_failed
+- duration_ms
+- error_message
+
+==================================================
+10. API Usage Monitor
+==================================================
+
+قسم مراقبة استهلاك API-Football.
+
+يعتمد على جدول football_api_usage_logs.
+
+المطلوب عرضه:
+
+- Requests Today
+- Successful Requests
+- Failed Requests
+- Most Used Endpoints
+- Average Response Time
+- Remaining Requests
+- API Errors
+
+تحذيرات مهمة:
+
+- API usage is high today
+- API requests failed
+- Remaining requests are low
+
+==================================================
+11. Favorites & Suggestions
+==================================================
+
+قسم تحليلي لفهم سلوك المستخدمين.
+
+الصفحات المقترحة:
+
+- Favorite Leagues
+- Favorite Teams
+- Favorite Fixtures
+- User Follow Suggestions
+
+الأدمن يجب أن يرى:
+
+- أكثر الفرق متابعة
+- أكثر الدوريات متابعة
+- أكثر المباريات متابعة
+- اقتراحات المتابعة
+- الاقتراحات التي تم تجاهلها
+- الاقتراحات التي تحولت إلى متابعة
+
+==================================================
+12. Search Analytics
+==================================================
+
+قسم تحليل عمليات البحث.
+
+يعتمد على جدول search_histories.
+
+المطلوب عرضه:
+
+- Most Searched Teams
+- Most Searched Leagues
+- Most Searched Players
+- Searches With No Results
+- Recent Searches
+
+الفائدة:
+
+- معرفة ما يبحث عنه المستخدمون
+- تحسين نتائج البحث
+- إضافة فرق أو دوريات مطلوبة
+- بناء اقتراحات متابعة أفضل
+
+==================================================
+شكل Sidebar المقترح
+==================================================
+
+Dashboard
+
+Users
+- All Users
+- User Devices
+- OTPs
+- Notification Preferences
+
+Football Setup
+- Leagues
+- Teams
+- League Teams
+
+Matches
+- All Fixtures
+- Today Matches
+- Live Center
+- Fixture Events
+- Lineups
+- Statistics
+- Player Ratings
+
+Competitions
+- Standings
+- Player Rankings
+
+News
+- All News
+- Create News
+
+Notifications
+- Notifications
+- Notification Logs
+
+Sync Center
+- Sync Dashboard
+- Sync Logs
+- API Usage Logs
+
+Engagement
+- Favorite Leagues
+- Favorite Teams
+- Favorite Fixtures
+- Search Histories
+- Follow Suggestions
+
+Settings
+
+==================================================
+ترتيب التنفيذ المقترح
+==================================================
+
+لا يجب تنفيذ كل شيء مرة واحدة.
+
+الأولوية المقترحة:
+
+1. Dashboard Overview
+2. Leagues CRUD
+3. Teams CRUD
+4. Fixtures List + Show
+5. Sync Center
+6. API Usage Logs
+7. Live Center
+8. News
+9. Notifications
+10. Favorites/Search Analytics
+
+==================================================
+أهم مرحلة أولى
+==================================================
+
+في البداية ركز على:
+
+- الدوريات
+- الفرق
+- المباريات
+- المزامنة مع API-Football
+- مراقبة استهلاك API
+- عرض مباريات اليوم واللايف
+
+ثم بعد ذلك انتقل إلى:
+
+- الأخبار
+- التنبيهات
+- المفضلات
+- سجل البحث
+- الاقتراحات
+
+==================================================
+الخلاصة
+==================================================
+
+لوحة التحكم لا يجب أن تكون مجرد CRUD للجداول.
+
+المطلوب أن تكون لوحة تشغيل كاملة لمنصة Live Scores، بحيث يستطيع الأدمن من خلالها:
+
+- اختيار الدوريات
+- إدارة الفرق
+- متابعة المباريات
+- تحديث بيانات API-Football
+- مراقبة الاستهلاك
+- إدارة الأخبار
+- إدارة التنبيهات
+- تحليل سلوك المستخدمين
+- تحسين تجربة المتابعة والاقتراحات
+
+بهذا الشكل تصبح الداشبورد مركز تحكم حقيقي لمنصة قريبة من تجربة 365Scores.

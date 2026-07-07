@@ -10,6 +10,17 @@ class Leagues extends Model
 
     protected $guarded = [];
 
+    protected function casts(): array
+    {
+        return [
+            'is_active' => 'boolean',
+            'is_featured' => 'boolean',
+            'has_standings' => 'boolean',
+            'meta' => 'array',
+            'deleted_at' => 'datetime',
+        ];
+    }
+
     public function teams()
     {
         return $this->belongsToMany(Teams::class, 'league_teams')

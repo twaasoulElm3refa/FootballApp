@@ -29,6 +29,11 @@ class UserRepository implements UserRepositoryInterface
         return User::count();
     }
 
+    public function countActive()
+    {
+        return User::where('status', 'active')->count();
+    }
+
     public function get($id)
     {
         return User::where('uuid', $id)->first();

@@ -1,0 +1,303 @@
+:root {
+    /* Main Brand Colors */
+    --color-dark: #020914;
+    --color-deep-navy: #07111f;
+    --color-navy-soft: #0c1b2d;
+
+    --color-green: #5cff1a;
+    --color-cyan: #18dfff;
+
+    --color-white: #ffffff;
+    --color-black: #000000;
+    --color-brand-ink: #03110b;
+    --color-admin-accent: #18a8c4;
+    --color-input-bg: #f8fbff;
+    --color-input-placeholder: #9ca3af;
+    --color-error-text: #b91c1c;
+    --color-error-bg: #fef2f2;
+    --color-error-border: #fecaca;
+
+    /* Text Colors */
+    --color-text-primary: #ffffff;
+    --color-text-dark: #07111f;
+    --color-text-label: #111827;
+    --color-text-muted: rgba(255, 255, 255, 0.68);
+    --color-text-muted-dark: #6b7280;
+
+    /* Alpha Colors */
+    --color-white-04: rgba(255, 255, 255, 0.04);
+    --color-white-06: rgba(255, 255, 255, 0.06);
+    --color-white-07: rgba(255, 255, 255, 0.07);
+    --color-white-08: rgba(255, 255, 255, 0.08);
+    --color-white-09: rgba(255, 255, 255, 0.09);
+    --color-white-10: rgba(255, 255, 255, 0.1);
+    --color-white-12: rgba(255, 255, 255, 0.12);
+    --color-white-14: rgba(255, 255, 255, 0.14);
+    --color-white-18: rgba(255, 255, 255, 0.18);
+    --color-white-28: rgba(255, 255, 255, 0.28);
+    --color-white-42: rgba(255, 255, 255, 0.42);
+    --color-white-55: rgba(255, 255, 255, 0.55);
+    --color-white-66: rgba(255, 255, 255, 0.66);
+    --color-white-68: rgba(255, 255, 255, 0.68);
+    --color-white-72: rgba(255, 255, 255, 0.72);
+    --color-white-75: rgba(255, 255, 255, 0.75);
+    --color-white-86: rgba(255, 255, 255, 0.86);
+    --color-white-92: rgba(255, 255, 255, 0.92);
+    --color-white-96: rgba(255, 255, 255, 0.96);
+
+    --color-black-08: rgba(0, 0, 0, 0.08);
+    --color-black-16: rgba(0, 0, 0, 0.16);
+    --color-black-24: rgba(0, 0, 0, 0.24);
+    --color-black-25: rgba(0, 0, 0, 0.25);
+    --color-black-28: rgba(0, 0, 0, 0.28);
+    --color-black-35: rgba(0, 0, 0, 0.35);
+    --color-black-36: rgba(0, 0, 0, 0.36);
+    --color-black-38: rgba(0, 0, 0, 0.38);
+    --color-black-42: rgba(0, 0, 0, 0.42);
+
+    --color-deep-navy-08: rgba(7, 17, 31, 0.08);
+    --color-deep-navy-12: rgba(7, 17, 31, 0.12);
+    --color-deep-navy-72: rgba(7, 17, 31, 0.72);
+    --color-deep-navy-82: rgba(7, 17, 31, 0.82);
+    --color-deep-navy-92: rgba(7, 17, 31, 0.92);
+    --color-deep-navy-96: rgba(7, 17, 31, 0.96);
+
+    --color-navy-soft-86: rgba(12, 27, 45, 0.86);
+    --color-navy-soft-96: rgba(12, 27, 45, 0.96);
+
+    --color-green-13: rgba(92, 255, 26, 0.13);
+    --color-green-16: rgba(92, 255, 26, 0.16);
+    --color-green-18: rgba(92, 255, 26, 0.18);
+    --color-green-20: rgba(92, 255, 26, 0.2);
+    --color-green-22: rgba(92, 255, 26, 0.22);
+    --color-green-24: rgba(92, 255, 26, 0.24);
+    --color-green-26: rgba(92, 255, 26, 0.26);
+    --color-green-28: rgba(92, 255, 26, 0.28);
+    --color-green-34: rgba(92, 255, 26, 0.34);
+    --color-green-35: rgba(92, 255, 26, 0.35);
+    --color-green-42: rgba(92, 255, 26, 0.42);
+    --color-green-44: rgba(92, 255, 26, 0.44);
+    --color-green-52: rgba(92, 255, 26, 0.52);
+    --color-green-70: rgba(92, 255, 26, 0.7);
+    --color-green-75: rgba(92, 255, 26, 0.75);
+    --color-green-80: rgba(92, 255, 26, 0.8);
+    --color-green-85: rgba(92, 255, 26, 0.85);
+    --color-green-88: rgba(92, 255, 26, 0.88);
+    --color-green-90: rgba(92, 255, 26, 0.9);
+    --color-green-92: rgba(92, 255, 26, 0.92);
+    --color-green-95: rgba(92, 255, 26, 0.95);
+    --color-green-98: rgba(92, 255, 26, 0.98);
+
+    --color-cyan-08: rgba(24, 223, 255, 0.08);
+    --color-cyan-12: rgba(24, 223, 255, 0.12);
+    --color-cyan-14: rgba(24, 223, 255, 0.14);
+    --color-cyan-18: rgba(24, 223, 255, 0.18);
+    --color-cyan-20: rgba(24, 223, 255, 0.2);
+    --color-cyan-22: rgba(24, 223, 255, 0.22);
+    --color-cyan-24: rgba(24, 223, 255, 0.24);
+    --color-cyan-26: rgba(24, 223, 255, 0.26);
+    --color-cyan-28: rgba(24, 223, 255, 0.28);
+    --color-cyan-32: rgba(24, 223, 255, 0.32);
+    --color-cyan-55: rgba(24, 223, 255, 0.55);
+    --color-cyan-75: rgba(24, 223, 255, 0.75);
+    --color-cyan-80: rgba(24, 223, 255, 0.8);
+    --color-cyan-82: rgba(24, 223, 255, 0.82);
+    --color-cyan-85: rgba(24, 223, 255, 0.85);
+    --color-cyan-88: rgba(24, 223, 255, 0.88);
+    --color-cyan-92: rgba(24, 223, 255, 0.92);
+    --color-cyan-95: rgba(24, 223, 255, 0.95);
+    --color-cyan-98: rgba(24, 223, 255, 0.98);
+
+    --color-brand-ink-28: rgba(3, 17, 11, 0.28);
+
+    /* Borders */
+    --color-border-light: rgba(255, 255, 255, 0.1);
+    --color-border-dark: rgba(7, 17, 31, 0.12);
+
+    /* Surfaces */
+    --color-surface-dark: rgba(12, 27, 45, 0.96);
+    --color-surface-deep: rgba(7, 17, 31, 0.96);
+    --color-surface-white: rgba(255, 255, 255, 0.96);
+
+    /* Brand Gradients */
+    --gradient-brand: linear-gradient(135deg, var(--color-green), var(--color-cyan));
+    --gradient-dark-bg: linear-gradient(135deg, var(--color-dark) 0%, var(--color-deep-navy) 48%, var(--color-navy-soft) 100%);
+    --gradient-loader-bg:
+        radial-gradient(circle at 50% 45%, var(--color-green-20), transparent 18%),
+        radial-gradient(circle at 76% 46%, var(--color-cyan-26), transparent 34%),
+        radial-gradient(circle at 8% 24%, var(--color-deep-navy-82), transparent 38%),
+        var(--gradient-dark-bg);
+
+    --gradient-page-bg:
+        radial-gradient(circle at 50% 28%, var(--color-green-16), transparent 30%),
+        radial-gradient(circle at 72% 52%, var(--color-cyan-14), transparent 32%),
+        var(--gradient-dark-bg);
+
+    --gradient-login-bg:
+        radial-gradient(circle at 20% 15%, var(--color-green-13), transparent 28%),
+        radial-gradient(circle at 80% 70%, var(--color-cyan-18), transparent 34%),
+        var(--gradient-dark-bg);
+
+    --gradient-card-dark: linear-gradient(180deg, var(--color-surface-dark), var(--color-surface-deep));
+    --gradient-login-brand-side:
+        radial-gradient(circle at 50% 28%, var(--color-green-16), transparent 28%),
+        radial-gradient(circle at 70% 70%, var(--color-cyan-18), transparent 34%),
+        linear-gradient(180deg, var(--color-navy-soft-86), var(--color-deep-navy-92));
+
+    --gradient-loader-orb: radial-gradient(circle, var(--color-green-18), transparent 64%);
+    --gradient-green-glow-soft: radial-gradient(circle, var(--color-green-18), transparent 68%);
+    --gradient-green-glow-strong: radial-gradient(circle, var(--color-green-22), transparent 68%);
+    --gradient-cyan-glow-soft: radial-gradient(circle, var(--color-cyan-18), transparent 68%);
+    --gradient-cyan-glow-strong: radial-gradient(circle, var(--color-cyan-24), transparent 68%);
+    --gradient-loader-overlay:
+        linear-gradient(115deg, transparent 0 38%, var(--color-cyan-18) 48%, transparent 58%),
+        repeating-linear-gradient(90deg, var(--color-white-04) 0 1px, transparent 1px 74px);
+
+    --gradient-ring: conic-gradient(
+        from 0deg,
+        transparent 0deg 34deg,
+        var(--color-cyan-95) 58deg,
+        var(--color-green) 120deg,
+        transparent 178deg 222deg,
+        var(--color-green-95) 258deg,
+        var(--color-cyan-95) 318deg,
+        transparent 360deg
+    );
+
+    --gradient-ring-secondary: conic-gradient(
+        from 90deg,
+        transparent 0deg 42deg,
+        var(--color-green-85) 78deg,
+        var(--color-cyan-85) 132deg,
+        transparent 180deg 246deg,
+        var(--color-cyan-75) 286deg,
+        var(--color-green-80) 330deg,
+        transparent 360deg
+    );
+
+    --gradient-loader-ring-one: conic-gradient(
+        from 40deg,
+        transparent 0deg 28deg,
+        var(--color-green) 44deg,
+        var(--color-cyan) 98deg,
+        transparent 138deg 184deg,
+        var(--color-green-95) 226deg,
+        var(--color-cyan-95) 288deg,
+        transparent 334deg 360deg
+    );
+
+    --gradient-loader-ring-two: conic-gradient(
+        from 120deg,
+        transparent 0deg 34deg,
+        var(--color-cyan-98) 62deg,
+        var(--color-green-98) 118deg,
+        transparent 156deg 232deg,
+        var(--color-green-90) 270deg,
+        var(--color-cyan-88) 324deg,
+        transparent 360deg
+    );
+
+    --gradient-loader-ring-three: conic-gradient(
+        from 260deg,
+        transparent 0deg 54deg,
+        var(--color-green-90) 90deg,
+        var(--color-cyan-88) 142deg,
+        transparent 186deg 260deg,
+        var(--color-cyan-80) 306deg,
+        transparent 360deg
+    );
+
+    --gradient-admin-ring: conic-gradient(
+        from 0deg,
+        transparent 0deg 36deg,
+        var(--color-cyan-95) 70deg,
+        var(--color-green) 130deg,
+        transparent 185deg 225deg,
+        var(--color-green-92) 270deg,
+        var(--color-cyan-92) 320deg,
+        transparent 360deg
+    );
+
+    --gradient-hero-logo-shell:
+        radial-gradient(circle, var(--color-white-96), var(--color-white-42) 62%, transparent 64%),
+        conic-gradient(from 120deg, var(--color-green-70), var(--color-cyan-55), var(--color-green-70));
+
+    --gradient-loader-logo-overlay: linear-gradient(135deg, var(--color-green-22), var(--color-cyan-18));
+    --gradient-loader-progress: linear-gradient(90deg, transparent, var(--color-green), var(--color-cyan), transparent);
+
+    /* Shadows / Glow */
+    --shadow-card-dark:
+        0 30px 80px var(--color-black-36),
+        inset 0 1px 0 var(--color-white-08);
+
+    --shadow-brand:
+        0 18px 38px var(--color-cyan-20),
+        0 14px 30px var(--color-green-18);
+
+    --shadow-brand-hover:
+        0 22px 48px var(--color-cyan-28),
+        0 18px 36px var(--color-green-26);
+
+    --shadow-login-shell:
+        0 34px 90px var(--color-black-42),
+        inset 0 1px 0 var(--color-white-08);
+
+    --shadow-logo-box:
+        0 22px 50px var(--color-black-35),
+        0 0 36px var(--color-cyan-18);
+
+    --shadow-loader-logo:
+        0 22px 44px var(--color-black-38),
+        0 0 28px var(--color-green-34),
+        0 0 52px var(--color-cyan-18);
+
+    --shadow-loader-progress:
+        inset 0 0 0 1px var(--color-white-06),
+        0 0 18px var(--color-cyan-14);
+
+    --shadow-loader-progress-bar: 0 0 18px var(--color-green-44);
+    --shadow-hero-logo-shell:
+        0 20px 42px var(--color-black-24),
+        0 0 48px var(--color-green-20);
+
+    --shadow-input-focus:
+        0 0 0 4px var(--color-cyan-12),
+        0 12px 28px var(--color-deep-navy-08);
+
+    --shadow-login-button:
+        0 18px 34px var(--color-cyan-22),
+        0 12px 28px var(--color-green-18);
+
+    --shadow-login-button-hover:
+        0 24px 46px var(--color-cyan-28),
+        0 18px 36px var(--color-green-24);
+
+    --shadow-secondary-hover: 0 18px 36px var(--color-black-16);
+
+    --glow-green: 0 0 16px rgba(92, 255, 26, 0.8);
+    --glow-cyan: 0 0 18px rgba(24, 223, 255, 0.5);
+    --glow-cyan-soft: 0 0 18px var(--color-cyan-18);
+    --glow-green-text: 0 0 28px var(--color-green-35);
+
+    --filter-loader-ring:
+        drop-shadow(0 0 10px var(--color-green-42))
+        drop-shadow(0 0 18px var(--color-cyan-32));
+
+    --filter-hero-ring:
+        drop-shadow(0 0 10px var(--color-green-26))
+        drop-shadow(0 0 16px var(--color-cyan-18));
+
+    --filter-admin-ring:
+        drop-shadow(0 0 12px var(--color-green-28))
+        drop-shadow(0 0 18px var(--color-cyan-20));
+
+    --filter-logo-mask: drop-shadow(0 14px 22px var(--color-black-25));
+
+    /* Radius */
+    --radius-sm: 12px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+    --radius-xl: 30px;
+    --radius-2xl: 34px;
+    --radius-full: 999px;
+}
