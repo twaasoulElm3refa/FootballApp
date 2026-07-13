@@ -6,6 +6,7 @@ interface LeagueRepositoryInterface
 {
     public function getAll($perPage = 10, $search = null, $status = null);
     public function count();
+    public function getTopLeagues();
     public function countActive();
     public function get($id);
     public function create(array $data);

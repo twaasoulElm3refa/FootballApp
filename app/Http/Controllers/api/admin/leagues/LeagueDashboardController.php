@@ -4,10 +4,10 @@ namespace App\Http\Controllers\api\admin\leagues;
 
 use App\Http\Controllers\concerns\ApiResponse;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LeagueCreateRequest;
 use App\Repository\Contracts\leagues\LeagueRepositoryInterface;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Validation\Rule;
 
 class LeagueDashboardController extends Controller
 {
@@ -40,6 +40,17 @@ class LeagueDashboardController extends Controller
         });
 
         return $this->success($leagues, 'Leagues fetched successfully');
+    }
+
+    public function topLeagues()
+    {
+        $cacheKey = $this->makeCacheKey('top');
+
+        $leagues = $this->leaguesCache()->remember($cacheKey, $this->cacheTime, function () {
+            return $this->leagueRepository->getTopLeagues();
+        });
+
+        return $this->success($leagues, 'Top leagues fetched successfully');
     }
 
     public function leagueCount()
@@ -77,18 +88,18 @@ class LeagueDashboardController extends Controller
         return $this->success($league, 'League fetched successfully');
     }
 
-    public function createLeague(Request $request)
+    public function createLeague(LeagueCreateRequest $request)
     {
-        $league = $this->leagueRepository->create($this->validatedLeagueData($request));
+        $league = $this->leagueRepository->create($request->validated());
 
         $this->clearLeaguesCache();
 
         return $this->success($league, 'League created successfully');
     }
 
-    public function updateLeague(Request $request, $id)
+    public function updateLeague(LeagueCreateRequest $request, $id)
     {
-        $league = $this->leagueRepository->update($id, $this->validatedLeagueData($request, $id));
+        $league = $this->leagueRepository->update($id, $request->validated());
 
         $this->clearLeaguesCache();
 
@@ -119,27 +130,4 @@ class LeagueDashboardController extends Controller
         return Cache::tags([self::CACHE_TAG]);
     }
 
-    private function validatedLeagueData(Request $request, $id = null): array
-    {
-        $leagueId = $id ? $this->leagueRepository->get($id)?->id : null;
-
-        return $request->validate([
-            'api_league_id' => [
-                $id ? 'sometimes' : 'required',
-                'integer',
-                Rule::unique('leagues', 'api_league_id')->ignore($leagueId),
-            ],
-            'name' => [$id ? 'sometimes' : 'required', 'string', 'max:255'],
-            'type' => ['nullable', 'string', 'max:255'],
-            'country' => ['nullable', 'string', 'max:255'],
-            'logo' => ['nullable', 'string', 'max:255'],
-            'flag' => ['nullable', 'string', 'max:255'],
-            'season' => ['nullable', 'integer'],
-            'is_active' => ['sometimes', 'boolean'],
-            'is_featured' => ['sometimes', 'boolean'],
-            'sort_order' => ['sometimes', 'integer'],
-            'has_standings' => ['sometimes', 'boolean'],
-            'meta' => ['nullable', 'array'],
-        ]);
-    }
 }

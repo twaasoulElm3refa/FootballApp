@@ -131,4 +131,13 @@ class UserDashboardController extends Controller
     {
         return Cache::tags([self::CACHE_TAG]);
     }
+
+    public function latestUsers()
+    {
+        $users = $this->usersCache()->remember('dashboard:users:latest', $this->cacheTime, function () {
+            return $this->userInterface->latest();
+        });
+
+        return $this->success($users, 'Latest users fetched successfully');
+    }
 }

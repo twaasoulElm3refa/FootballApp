@@ -33,6 +33,15 @@ class LeaguesRepository implements LeagueRepositoryInterface
         return Leagues::count();
     }
 
+    public function getTopLeagues()
+    {
+        return Leagues::query()
+            ->where('is_active', true)
+            ->orderBy('sort_order', 'asc')
+            ->limit(5)
+            ->get();
+    }
+
     public function countActive()
     {
         return Leagues::where('is_active', true)->count();

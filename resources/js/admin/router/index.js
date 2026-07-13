@@ -27,6 +27,8 @@ const routes = [
                 path: '',
                 redirect: '/admin/dashboard'
             },
+
+            // Users Routes
             {
                 path: 'users',
                 name: 'Users',
@@ -49,6 +51,32 @@ const routes = [
                 path: 'users/:id/edit',
                 name: 'EditUser',
                 component: () => import('../views/users/Edit_User.vue'),
+                meta: { requiresAuth: true, requiresAdmin: true },
+            },
+
+            // Leagues Routes
+            {
+                path: 'leagues',
+                name: 'Leagues',
+                component: () => import('../views/leagues/All_Leagues.vue'),
+                meta: { requiresAuth: true, requiresAdmin: true },
+            },
+            {
+                path: 'leagues/create',
+                name: 'CreateLeague',
+                component: () => import('../views/leagues/Create_League.vue'),
+                meta: { requiresAuth: true, requiresAdmin: true },
+            },
+            {
+                path: 'leagues/:id',
+                name: 'ShowLeague',
+                component: () => import('../views/leagues/Show_League.vue'),
+                meta: { requiresAuth: true, requiresAdmin: true },
+            },
+            {
+                path: 'leagues/:id/edit',
+                name: 'EditLeague',
+                component: () => import('../views/leagues/Edit_League.vue'),
                 meta: { requiresAuth: true, requiresAdmin: true },
             },
             // {

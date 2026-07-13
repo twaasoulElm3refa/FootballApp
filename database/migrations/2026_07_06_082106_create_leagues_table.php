@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('leagues', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('api_league_id')->unique();
+            $table->unsignedBigInteger('api_league_id')->unique()->nullable();
             $table->string('name');
             $table->string('type')->nullable();
             $table->string('country')->nullable();

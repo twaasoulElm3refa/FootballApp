@@ -29,6 +29,11 @@ class UserRepository implements UserRepositoryInterface
         return User::count();
     }
 
+    public function latest()
+    {
+        return User::latest()->take(5)->get();
+    }
+
     public function countActive()
     {
         return User::where('status', 'active')->count();
@@ -41,7 +46,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function create(array $data)
     {
-        if (!empty($data['password'])) {
+        if (! empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         }
 
@@ -52,7 +57,7 @@ class UserRepository implements UserRepositoryInterface
     {
         $user = User::where('uuid', $id)->firstOrFail();
 
-        if (!empty($data['password'])) {
+        if (! empty($data['password'])) {
             $data['password'] = Hash::make($data['password']);
         } else {
             unset($data['password']);

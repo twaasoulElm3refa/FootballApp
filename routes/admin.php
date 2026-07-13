@@ -17,6 +17,7 @@ Route::middleware('auth:sanctum',)->group(function () {
 
     Route::prefix('users')->group(function () {
         Route::get('/', [UserDashboardController::class, 'users']);
+        Route::get('/latest', [UserDashboardController::class, 'latestUsers']);
         Route::get('/count', [UserDashboardController::class, 'userCount']);
         Route::get('/active', [UserDashboardController::class, 'userActive']);
         Route::get('/{id}', [UserDashboardController::class, 'getUser']);
@@ -26,6 +27,7 @@ Route::middleware('auth:sanctum',)->group(function () {
     });
 
     Route::prefix('leagues')->group(function () {
+        Route::get('/top', [LeagueDashboardController::class, 'topLeagues']);
         Route::get('/', [LeagueDashboardController::class, 'leagues']);
         Route::get('/count', [LeagueDashboardController::class, 'leagueCount']);
         Route::get('/active', [LeagueDashboardController::class, 'leagueActive']);
@@ -56,4 +58,3 @@ Route::middleware('auth:sanctum',)->group(function () {
     });
 
 });
-
